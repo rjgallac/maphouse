@@ -1,12 +1,16 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Property;
+import com.example.demo.model.PropertyDetailDto;
+import com.example.demo.model.PropertyDto;
 import com.example.demo.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/property")
@@ -16,12 +20,30 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping
-    public Iterable<Property> get(){
+    public List<PropertyDto> get(){
         return propertyService.getProperties();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PropertyDetailDto> getProperty(@PathVariable Long id) {
+        Optional<PropertyDetailDto> property = propertyService.getProperty(id);
+        if(property.isPresent()) {
+            return ResponseEntity.ok(property.get());
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
     @PostMapping
-    public void post(){
+    public void post(@RequestBody PropertyDto propertyDto){
+        propertyService.addProperty(propertyDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProperty(@PathVariable Long id) {
+        propertyService.deleteProperty(id);
+
 
     }
+
 }
