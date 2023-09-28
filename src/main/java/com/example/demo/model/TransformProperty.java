@@ -13,12 +13,16 @@ public class TransformProperty {
 
     public PropertyDto toDto(Property property) {
         return PropertyDto.builder()
+                .id(property.getId())
                 .address(property.getAddress())
                 .build();
     }
 
-    public PropertyDetailDto toPropertyDetailDto(Property property) {
-        return new PropertyDetailDto();
+    public PropertyDto toPropertyDetailDto(Property property) {
+        return PropertyDto.builder()
+                .id(property.getId())
+                .address(property.getAddress())
+                .build();
     }
 
 }

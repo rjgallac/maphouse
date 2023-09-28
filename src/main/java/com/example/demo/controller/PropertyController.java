@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.PropertyDetailDto;
 import com.example.demo.model.PropertyDto;
 import com.example.demo.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +23,8 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PropertyDetailDto> getProperty(@PathVariable Long id) {
-        Optional<PropertyDetailDto> property = propertyService.getProperty(id);
+    public ResponseEntity<PropertyDto> getProperty(@PathVariable Long id) {
+        Optional<PropertyDto> property = propertyService.getProperty(id);
         if(property.isPresent()) {
             return ResponseEntity.ok(property.get());
         }

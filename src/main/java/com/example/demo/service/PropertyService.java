@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Property;
-import com.example.demo.model.PropertyDetailDto;
 import com.example.demo.model.PropertyDto;
 import com.example.demo.model.TransformProperty;
 import com.example.demo.repository.PropertyRepository;
@@ -39,7 +38,7 @@ public class PropertyService {
         propertyRepository.deleteById(id);
     }
 
-    public Optional<PropertyDetailDto> getProperty(Long id) {
+    public Optional<PropertyDto> getProperty(Long id) {
         Optional<Property> byId = propertyRepository.findById(id);
         if(byId.isPresent()) {
             return Optional.of(transformProperty.toPropertyDetailDto(byId.get()));

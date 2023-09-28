@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
 import lombok.Builder;
+import lombok.Getter;
 
 @Builder
+@Getter
 public class PropertyDto {
+
+    private Long id;
 
     private String longitude;
 
@@ -19,59 +23,4 @@ public class PropertyDto {
 
     private String noBedrooms;
 
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPropertyType() {
-        return propertyType;
-    }
-
-    public void setPropertyType(String propertyType) {
-        this.propertyType = propertyType;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getNoBedrooms() {
-        return noBedrooms;
-    }
-
-    public void setNoBedrooms(String noBedrooms) {
-        this.noBedrooms = noBedrooms;
-    }
 }

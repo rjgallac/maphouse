@@ -6,4 +6,5 @@ curl  -X POST http://localhost:8080/property -H "Content-Type: application/json"
 
 curl  http://localhost:8080/property -H "Content-Type: application/json" 
 
+curl  http://localhost:8080/property/1 -H "Content-Type: application/json" 
 
