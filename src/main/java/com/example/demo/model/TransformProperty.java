@@ -6,13 +6,15 @@ import org.springframework.stereotype.Component;
 public class TransformProperty {
 
     public Property toProperty(PropertyDto propertyDto) {
-        Property property = new Property();
-        return property;
+        return Property.builder()
+                .address(propertyDto.getAddress())
+                .build();
     }
 
     public PropertyDto toDto(Property property) {
-        PropertyDto propertyDto = new PropertyDto();
-        return propertyDto;
+        return PropertyDto.builder()
+                .address(property.getAddress())
+                .build();
     }
 
     public PropertyDetailDto toPropertyDetailDto(Property property) {
